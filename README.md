@@ -22,7 +22,7 @@ Criar um simples Dashboard em **Python** e **Streamlit**, para a visualização 
 <br></br>
 # Introdução
 
-Os dados apresentados nesse estudo acadêmico, referem-se ao registro de reclamções dos usuários contra as operadoras de Banda Larga Fixa (**SCM** - Serviço de Comunicação Multimídia), enviados pelas prestadoras do serviço.
+Os dados apresentados nesse estudo acadêmico, referem-se ao registro de reclamções dos usuários contra as operadoras de Banda Larga Fixa (**SCM** - Serviço de Comunicação Multimídia), coletados no Sistema de Suporte do Atendimento aos Usuários da Anatel.
 
-O Serviço de Comunicação Multimídia é um serviço fixo de telecomunicações de interesse coletivo, prestado em âmbito nacional e internacional, no regime privado, que possibilita a oferta de capacidade de transmissão, emissão e recepção de informações multimídia, permitindo inclusive o provimento de conexão à internet, utilizando quaisquer meios, a Assinantes dentro de uma Área de Prestação de Serviço.
+
 <br><br>
