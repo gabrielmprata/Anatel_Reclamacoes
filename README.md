@@ -26,3 +26,16 @@ Os dados apresentados nesse estudo acadêmico, referem-se ao registro de reclam�
 
 
 <br><br>
+# **<font color=#85d338> 1. Definição do problema**
+>
+O mercado de banda larga fixa vem crescendo cada vez mais no Brasil, gerando uma grande concorrência entre empresas de telecomunicações.
+# **<font color=#85d338> 2. Coleta de Dados**
+>
+Os dados foram coletados do sítio da Agência Nacional de Telecomunicações.<img align="left" width="45" height="45" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Anatel_Logo.svg/180px-Anatel_Logo.svg.png">
+>
+https://dados.gov.br/dados/conjuntos-dados/solicitacoesregistradasnaanatel
+<br>
+>
+# **<font color=#85d338> 3. Pré-porcessamento**
+>
+
