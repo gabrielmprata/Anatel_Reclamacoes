@@ -13,7 +13,8 @@
 
 # :radio_button: Objetivo 
 Criar um simples Dashboard em **Python** e **Streamlit**, para a visualização das informações de reclamações dos usuários de banda larga fixa no Brasil.
-
+>
+E apresentar as informações da **Pesquisa de Satisfação e Qualidade** feita pela Anatel, com os usuários.
 <br><br>
 # Ferramentas utilizadas
 <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="40" height="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original-wordmark.svg" width="40" height="40"/>   <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/plotly/plotly-original-wordmark.svg" width="40" height="40"/>  <img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original-wordmark.svg" width="40" height="40"/>
