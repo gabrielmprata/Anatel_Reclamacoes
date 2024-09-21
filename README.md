@@ -24,6 +24,8 @@ E apresentar as informações da **Pesquisa de Satisfação e Qualidade** feita 
 # Introdução
 
 Os dados apresentados nesse estudo acadêmico, referem-se ao registro de reclamções dos usuários contra as operadoras de Banda Larga Fixa (**SCM** - Serviço de Comunicação Multimídia), coletados no Sistema de Suporte do Atendimento aos Usuários da Anatel.
+>
+Demonstramos também nesse estudo, a **pesquisa de satisfação e qualidade** realizada pela Anatel.
 
 
 <br><br>
