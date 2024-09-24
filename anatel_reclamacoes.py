@@ -94,9 +94,9 @@ var_cob = (df_historico_ind.nota.values[12] -
 #######################
 # Dashboard Main Panel
 
-# st.markdown("# Notas Indicadores - Internet Fixa, 2023")
+st.markdown("# Notas Indicadores - Internet Fixa, 2023")
 
-with st.expander("Notas Indicadores - Internet Fixa, 2023", expanded=True):
+with st.expander("Notas Indicadores", expanded=True):
 
     col = st.columns((1.6, 1.3, 1.3), gap='medium')
 
@@ -117,19 +117,21 @@ with st.expander("Notas Indicadores - Internet Fixa, 2023", expanded=True):
         st.metric(label="", value=str(
             (df_historico_ind.nota.values[13]).round(2)), delta=str(var_info))
 
-col2 = st.columns((1.6, 1.3, 1.3), gap='medium')
+    col2 = st.columns((1.6, 1.3, 1.3), gap='medium')
 
-with col2[0]:
-    st.markdown('### Atendimento Telefônico')
-    st.metric(label="", value=str(
-        (df_historico_ind.nota.values[15]).round(2)), delta=str(var_aten))
+    with col2[0]:
+        st.markdown('### Atendimento Telefônico')
+        st.metric(label="", value=str(
+            (df_historico_ind.nota.values[15]).round(2)), delta=str(var_aten))
 
-with col2[1]:
-    st.markdown('### Atendimento Digital')
-    st.metric(label="", value=str(
-        (df_historico_ind.nota.values[14]).round(2)), delta=str(var_dig))
+    with col2[1]:
+        st.markdown('### Atendimento Digital')
+        st.metric(label="", value=str(
+            (df_historico_ind.nota.values[14]).round(2)), delta=str(var_dig))
 
-with col2[2]:
-    st.markdown('### Cobrança')
-    st.metric(label="", value=str(
-        (df_historico_ind.nota.values[12]).round(2)), delta=str(var_aten))
+    with col2[2]:
+        st.markdown('### Cobrança')
+        st.metric(label="", value=str(
+            (df_historico_ind.nota.values[12]).round(2)), delta=str(var_aten))
+
+st.markdown("# Histórico Indicadores, 2021-2023")
