@@ -3,6 +3,7 @@
 import streamlit as st
 # import webbrowser
 import pandas as pd
+import plotly.express as px
 # from streamlit.components.v1 import html
 
 #######################
@@ -91,6 +92,23 @@ var_dig = (df_historico_ind.nota.values[14] -
            df_historico_ind.nota.values[8]).round(2)
 var_cob = (df_historico_ind.nota.values[12] -
            df_historico_ind.nota.values[6]).round(2)
+
+
+#######################
+# Construção dos Gráficos
+
+# Histórico indicadores
+hist = px.histogram(df_historico_ind, x="indicador", y="nota", color='ano', barmode='group',
+                    labels=dict(indicador="Indicador",
+                                ano="Ano", nota="Nota"),
+                    color_discrete_sequence=px.colors.sequential.YlOrRd, text_auto='.3s',
+                    template="plotly_dark"
+                    )
+hist.update_traces(textfont_size=12, textangle=0,
+                   textposition="outside", cliponaxis=False)
+hist.update_layout(yaxis_title="Nota")
+
+
 #######################
 # Dashboard Main Panel
 
@@ -135,3 +153,7 @@ with st.expander("Notas Indicadores", expanded=True):
             (df_historico_ind.nota.values[12]).round(2)), delta=str(var_aten))
 
 st.markdown("# Histórico Indicadores, 2021-2023")
+
+
+with st.expander("Histórico", expanded=True):
+    st.plotly_chart(hist, use_container_width=True)
