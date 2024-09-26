@@ -1,6 +1,7 @@
 #######################
 # Importando libraries
 import streamlit as st
+import altair as alt
 # import webbrowser
 import pandas as pd
 import plotly.express as px
@@ -11,17 +12,22 @@ import plotly.express as px
 st.set_page_config(
     page_title="Anatel - Reclamações",
     page_icon="😡",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
 )
 
-# alt.themes.enable("dark")
+alt.themes.enable("dark")
 
 
 #######################
 # CSS styling
 st.markdown("""
 <style>
-            
+
+section[data-testid="stSidebar"] {
+            width: 200px;
+        }                    
+
 [data-testid="block-container"] {
     padding-left: 2rem;
     padding-right: 2rem;
