@@ -174,6 +174,16 @@ df_idade = df_pesquisa[(df_pesquisa['grupo'] == 'Perfil') &
                        (df_pesquisa['estado'] == 'Média Brasil')
                        ].copy()
 
+# 4.3 Renda
+df_renda = df_pesquisa[(df_pesquisa['grupo'] == 'Perfil') &
+                       (df_pesquisa['calculo'] == 'Percentual') &
+                       (df_pesquisa['tema'] == 'Faixa de renda familiar') &
+                       (df_pesquisa['ano'] == 2023) &
+                       (df_pesquisa['prestadora'] == 'Média Prestadoras') &
+                       (df_pesquisa['estado'] == 'Média Brasil')
+                       ].copy()
+
+
 #######################
 # Construção dos Gráficos
 
@@ -295,6 +305,18 @@ idade = px.pie(df_idade, values='nota', names='alternativas',
 idade.update_layout(showlegend=False)
 idade.update_traces(textposition='outside', textinfo='percent+label')
 
+# 4.3 Renda familiar
+renda = px.bar(df_renda, x='nota', y='alternativas', color='alternativas', orientation='h',
+               labels=dict(alternativas="Renda Familiar", nota="Percentual"),
+               color_discrete_sequence=["#fff666"],
+               height=500,  # altura
+               title="Renda familiar",
+               template="plotly_dark",  text_auto='2f'
+               )
+renda.update_layout(showlegend=False)
+renda.update_yaxes(showticklabels=True, showgrid=False, title_text='')
+renda.update_xaxes(visible=False, fixedrange=True, showgrid=False)
+
 #######################
 # Dashboard Main Panel
 
@@ -388,3 +410,6 @@ with st.expander("Perfil", expanded=True):
 
     with col[1]:
         st.plotly_chart(idade, use_container_width=True)
+
+    with col[0]:
+        st.plotly_chart(renda, use_container_width=True)
