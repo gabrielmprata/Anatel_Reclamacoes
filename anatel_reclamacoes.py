@@ -183,6 +183,15 @@ df_renda = df_pesquisa[(df_pesquisa['grupo'] == 'Perfil') &
                        (df_pesquisa['estado'] == 'Média Brasil')
                        ].copy()
 
+# 4.4 Escolaridade
+df_escolaridade = df_pesquisa[(df_pesquisa['grupo'] == 'Perfil') &
+                              (df_pesquisa['calculo'] == 'Percentual') &
+                              (df_pesquisa['tema'] == 'Escolaridade') &
+                              (df_pesquisa['ano'] == 2023) &
+                              (df_pesquisa['prestadora'] == 'Média Prestadoras') &
+                              (df_pesquisa['estado'] == 'Média Brasil')
+                              ].copy()
+
 
 #######################
 # Construção dos Gráficos
@@ -317,6 +326,18 @@ renda.update_layout(showlegend=False)
 renda.update_yaxes(showticklabels=True, showgrid=False, title_text='')
 renda.update_xaxes(visible=False, fixedrange=True, showgrid=False)
 
+
+escola = px.bar(df_escolaridade, x='nota', y='alternativas', color='alternativas', orientation='h',
+                labels=dict(alternativas="Escolaridade", nota="Percentual"),
+                color_discrete_sequence=["#fff666"],
+                height=500,  # altura
+                title="Escolaridade",
+                template="plotly_dark",  text_auto='2f'
+                )
+escola.update_layout(showlegend=False)
+escola.update_yaxes(showticklabels=True, showgrid=False, title_text='')
+escola.update_xaxes(visible=False, fixedrange=True, showgrid=False)
+
 #######################
 # Dashboard Main Panel
 
@@ -413,3 +434,6 @@ with st.expander("Perfil", expanded=True):
 
     with col[0]:
         st.plotly_chart(renda, use_container_width=True)
+
+    with col[1]:
+        st.plotly_chart(escola, use_container_width=True)
