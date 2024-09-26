@@ -155,6 +155,25 @@ df_isg_qualidade = (df_pesquisa[["indicador", "tema", 'nota']]
                      ]
                     ).groupby(["indicador", "tema"])['nota'].mean().round(2).reset_index()
 
+# 4. Perfil Sociodemográfico
+# 4.1 Sexo
+df_sexo = df_pesquisa[(df_pesquisa['grupo'] == 'Perfil') &
+                      (df_pesquisa['calculo'] == 'Percentual') &
+                      (df_pesquisa['tema'] == 'Sexo') &
+                      (df_pesquisa['ano'] == 2023) &
+                      (df_pesquisa['prestadora'] == 'Média Prestadoras') &
+                      (df_pesquisa['estado'] == 'Média Brasil')
+                      ].copy()
+
+# 4.2 Faixa etária
+df_idade = df_pesquisa[(df_pesquisa['grupo'] == 'Perfil') &
+                       (df_pesquisa['calculo'] == 'Percentual') &
+                       (df_pesquisa['tema'] == 'Faixa etária') &
+                       (df_pesquisa['ano'] == 2023) &
+                       (df_pesquisa['prestadora'] == 'Média Prestadoras') &
+                       (df_pesquisa['estado'] == 'Média Brasil')
+                       ].copy()
+
 #######################
 # Construção dos Gráficos
 
@@ -254,6 +273,28 @@ qual5 = px.bar(df_isg_qualidade.query('indicador == "Qualidade do Funcionamento"
 qual5.update_layout(showlegend=False)
 qual5.update_yaxes(showticklabels=True, showgrid=False, title_text='')
 qual5.update_xaxes(visible=False, fixedrange=True, showgrid=False)
+
+# 4. Perfil Sociodemográfico
+# 4.1 Sexo
+sexo = px.pie(df_sexo, values='nota', names='alternativas',
+              labels=dict(nota="Percentual", alternativas="Sexo"),
+              template="plotly_dark",
+              title="Sexo",
+              height=350, width=350, color_discrete_sequence=px.colors.sequential.YlOrRd
+              )
+sexo.update_layout(showlegend=False)
+sexo.update_traces(textposition='outside', textinfo='percent+label')
+
+# 4.2 Faixa etária
+idade = px.pie(df_idade, values='nota', names='alternativas',
+               labels=dict(nota="Percentual", alternativas="Faixa Etária"),
+               template="plotly_dark",
+               title="Faixa etária",
+               height=350, width=350, color_discrete_sequence=px.colors.sequential.YlOrRd
+               )
+idade.update_layout(showlegend=False)
+idade.update_traces(textposition='outside', textinfo='percent+label')
+
 #######################
 # Dashboard Main Panel
 
@@ -316,7 +357,7 @@ st.markdown(
 with st.expander("Satisfação Geral", expanded=True):
     st.plotly_chart(isg, use_container_width=True)
 
-with st.expander("Qualidade :arrow_down:", expanded=False):
+with st.expander("Qualidade", expanded=False):
 
     col = st.columns((2.6, 2.9), gap='medium')
 
@@ -335,3 +376,15 @@ with st.expander("Qualidade :arrow_down:", expanded=False):
     col2 = st.columns((5.6, 0.6), gap='medium')
     with col2[0]:
         st.plotly_chart(qual5, use_container_width=True)
+
+st.markdown("# Perfil Sociodemográfico dos Consumidores, 2023")
+
+with st.expander("Perfil", expanded=True):
+
+    col = st.columns((2.6, 2.9), gap='medium')
+
+    with col[0]:
+        st.plotly_chart(sexo, use_container_width=True)
+
+    with col[1]:
+        st.plotly_chart(idade, use_container_width=True)
