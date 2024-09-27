@@ -77,7 +77,14 @@ section[data-testid="stSidebar"] {
 
 #######################
 # Carregando dataset
-df_anatel = pd.read_csv('datasets/df_anatel.csv.bz2')
+# df_anatel = pd.read_csv('datasets/df_anatel.csv.bz2')
+
+@st.cache_data
+def load_data():
+    return pd.read_csv("https://raw.githubusercontent.com/gabrielmprata/Anatel_Reclamacoes/main/datasets/df_anatel.csv.bz2")
+
+
+df_anatel = load_data()
 
 # Construção dos Datasets
 # 1. Histórico indicadores
