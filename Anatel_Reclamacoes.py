@@ -288,17 +288,19 @@ with st.expander("Mapa do Brasil, 2023", expanded=True):
             },
             hide_index=True,
         )
+st.markdown("## Por Operadora")
 
-st.dataframe(
-    oper_historico,
-    column_order=("oper_logo", "Operadora", "2023", "historico"),
-    column_config={
-        "oper_logo": st.column_config.ImageColumn(" ", width="small"),
-        "Operadora": "Operadora",
-        "2023": "2023",
-        "historico": st.column_config.LineChartColumn(
-                "Histórico 2015-2024"
-        ),
-    },
-    hide_index=True,
-)
+with st.expander("Operadoras, 2023", expanded=True):
+    st.dataframe(
+        oper_historico,
+        column_order=("oper_logo", "Operadora", "2023", "historico"),
+        column_config={
+            "oper_logo": st.column_config.ImageColumn(" ", width="small"),
+            "Operadora": "Operadora",
+            "2023": "2023",
+            "historico": st.column_config.AreaChartColumn(
+                    "Histórico 2015-2024"
+            ),
+        },
+        hide_index=True,
+    )
