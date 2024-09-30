@@ -234,5 +234,7 @@ with st.expander("Condição da reclamação, 2015-2024", expanded=True):
 st.markdown("## Por Estado e Região")
 
 with st.expander("Mapa do Brasil, 2023", expanded=True):
-    # st.markdown("xxx")
-    st.plotly_chart(choropleth, use_container_width=True)
+    col = st.columns((3.6, 2.3), gap='medium')
+
+    with col[0]:
+        st.plotly_chart(choropleth, use_container_width=True)
