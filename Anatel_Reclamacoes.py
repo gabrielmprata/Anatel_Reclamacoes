@@ -120,9 +120,6 @@ df_uf = (df_anatel[["uf", 'qtd']]
          [(df_anatel['ano'] == 2023)]
          ).groupby(["uf"])['qtd'].sum().reset_index()
 
-#######################
-# Carregar Mapa do Brasil
-
 # Carregando o arquivo Json com o mapa do Brasil
 with urlopen('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson') as response:
     Brasil = json.load(response)
@@ -133,8 +130,11 @@ for feature in Brasil["features"]:
     # definindo a informação do gráfico
     state_id_map[feature["properties"]["sigla"]] = feature["id"]
 
-# 3. Notas das Perguntas que compõe o Índice de Satisfação Geral e Qualidade
-# 3.1 ISG
+# 3.1 Por regiao
+
+df_total_regiao = (df_anatel[["regiao", 'qtd']]
+                   [(df_anatel['ano'] == 2023)]
+                   ).groupby(["regiao"])['qtd'].sum().reset_index()
 
 
 # 3.2 Perguntas qualidade
@@ -217,6 +217,14 @@ choropleth.update_layout(
     height=350
 )
 
+# 3.1 Por regiao
+reg = px.pie(df_total_regiao, values='qtd', names='regiao', labels=dict(regiao="Região", qtd="Reclamações"),
+             height=350, width=350, color_discrete_sequence=px.colors.sequential.YlOrRd, template="plotly_dark"
+             )
+reg.update_layout(showlegend=False)
+reg.update_traces(textposition='outside', textinfo='percent+label')
+
+
 #######################
 # Dashboard Main Panel
 
@@ -238,3 +246,6 @@ with st.expander("Mapa do Brasil, 2023", expanded=True):
 
     with col[0]:
         st.plotly_chart(choropleth, use_container_width=True)
+
+    with col[1]:
+        st.plotly_chart(reg, use_container_width=True)
