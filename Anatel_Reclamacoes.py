@@ -90,6 +90,10 @@ df_anatel = load_data()
 df_uf_hist = pd.read_csv(
     'https://raw.githubusercontent.com/gabrielmprata/Anatel_Reclamacoes/main/datasets/uf_historico.csv', sep=';')
 
+# carrega dataset com o caminho das imagens
+UF_flag = pd.read_csv(
+    'https://raw.githubusercontent.com/gabrielmprata/anatel/refs/heads/main/datasets/UF_flags.csv', encoding="utf_8", sep=';')
+
 # Construção dos Datasets
 # 1. Histórico indicadores
 
@@ -144,6 +148,7 @@ df_total_regiao = (df_anatel[["regiao", 'qtd']]
 df_uf_hist["historico"] = "[" + df_uf_hist["2015"].apply(str) + ", " + df_uf_hist["2016"].apply(str) + ", " + df_uf_hist["2017"].apply(str) + ", " + df_uf_hist["2018"].apply(str) + ", " + df_uf_hist["2019"].apply(
     str) + ", " + df_uf_hist["2020"].apply(str) + ", " + df_uf_hist["2021"].apply(str) + ", " + df_uf_hist["2022"].apply(str) + ", " + df_uf_hist["2023"].apply(str) + ", " + df_uf_hist["2024"].apply(str) + "]"
 
+df_uf_hist = pd.merge(df_uf_hist, UF_flag,  left_on='UF', right_on='uf')
 
 # 4. Perfil Sociodemográfico
 # 4.1 Sexo
@@ -255,4 +260,16 @@ with st.expander("Mapa do Brasil, 2023", expanded=True):
     with col[1]:
         st.plotly_chart(reg, use_container_width=True)
 
-df_uf_hist
+st.dataframe(
+    df_uf_hist,
+    column_order=("flag", "UF", "2023", "historico"),
+    column_config={
+        "flag": st.column_config.ImageColumn(" ", width="small"),
+        "UF": "UF",
+        "2023": "2023",
+        "historico": st.column_config.LineChartColumn(
+                "Histórico 2015-2024"
+        ),
+    },
+    hide_index=True,
+)
