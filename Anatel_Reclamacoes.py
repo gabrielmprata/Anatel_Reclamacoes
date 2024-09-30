@@ -90,9 +90,20 @@ df_anatel = load_data()
 df_uf_hist = pd.read_csv(
     'https://raw.githubusercontent.com/gabrielmprata/Anatel_Reclamacoes/main/datasets/uf_historico.csv', sep=';')
 
+df_uf_hist.sort_values(by='2023', ascending=False, inplace=True)
+
 # carrega dataset com o caminho das imagens
 UF_flag = pd.read_csv(
     'https://raw.githubusercontent.com/gabrielmprata/anatel/refs/heads/main/datasets/UF_flags.csv', encoding="utf_8", sep=';')
+
+# carrega dataset com historico de operadoras por coluna
+oper_historico = pd.read_csv(
+    'https://raw.githubusercontent.com/gabrielmprata/Anatel_Reclamacoes/refs/heads/main/datasets/top_operadora.csv', encoding="utf_8", sep=';')
+
+oper_logo = pd.read_csv(
+    'https://raw.githubusercontent.com/gabrielmprata/Anatel_Reclamacoes/refs/heads/main/datasets/oper_logo.csv', encoding="utf_8", sep=';')
+
+oper_historico.sort_values(by='2023', ascending=False, inplace=True)
 
 # Construção dos Datasets
 # 1. Histórico indicadores
@@ -150,9 +161,12 @@ df_uf_hist["historico"] = "[" + df_uf_hist["2015"].apply(str) + ", " + df_uf_his
 
 df_uf_hist = pd.merge(df_uf_hist, UF_flag,  left_on='UF', right_on='uf')
 
-# 4. Perfil Sociodemográfico
-# 4.1 Sexo
+# 4. Operadora
+oper_historico["historico"] = "[" + oper_historico["2015"].apply(str) + ", " + oper_historico["2016"].apply(str) + ", " + oper_historico["2017"].apply(str) + ", " + oper_historico["2018"].apply(str) + ", " + oper_historico["2019"].apply(
+    str) + ", " + oper_historico["2020"].apply(str) + ", " + oper_historico["2021"].apply(str) + ", " + oper_historico["2022"].apply(str) + ", " + oper_historico["2023"].apply(str) + ", " + oper_historico["2024"].apply(str) + "]"
 
+oper_historico = pd.merge(oper_historico, oper_logo,
+                          left_on='Operadora', right_on='Operadora')
 
 # 4.2 Faixa etária
 
@@ -260,12 +274,27 @@ with st.expander("Mapa do Brasil, 2023", expanded=True):
     with col[1]:
         st.plotly_chart(reg, use_container_width=True)
 
+    with col[0]:
+        st.dataframe(
+            df_uf_hist,
+            column_order=("flag", "UF", "2023", "historico"),
+            column_config={
+                "flag": st.column_config.ImageColumn(" ", width="small"),
+                "UF": "UF",
+                "2023": "2023",
+                "historico": st.column_config.LineChartColumn(
+                        "Histórico 2015-2024"
+                ),
+            },
+            hide_index=True,
+        )
+
 st.dataframe(
-    df_uf_hist,
-    column_order=("flag", "UF", "2023", "historico"),
+    oper_historico,
+    column_order=("oper_logo", "Operadora", "2023", "historico"),
     column_config={
-        "flag": st.column_config.ImageColumn(" ", width="small"),
-        "UF": "UF",
+        "oper_logo": st.column_config.ImageColumn(" ", width="small"),
+        "Operadora": "Operadora",
         "2023": "2023",
         "historico": st.column_config.LineChartColumn(
                 "Histórico 2015-2024"
