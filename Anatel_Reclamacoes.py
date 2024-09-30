@@ -2,6 +2,8 @@
 # Importando libraries
 import streamlit as st
 import altair as alt
+import json
+from urllib.request import urlopen
 # import webbrowser
 import pandas as pd
 import numpy as np
@@ -110,11 +112,26 @@ df_hist_condicao = (df_anatel[["ano", "condicao", 'qtd']]
 
 df_hist_condicao['qtd'] = (df_hist_condicao['qtd'])/1000
 
-# 2.1 Média Brasil por Prestadora
 
+# 3 Por estado e regiao
+# Mapa
 
-# 2.3 Por estado
+df_uf = (df_anatel[["uf", 'qtd']]
+         [(df_anatel['ano'] == 2023)]
+         ).groupby(["uf"])['qtd'].sum().reset_index()
 
+#######################
+# Carregar Mapa do Brasil
+
+# Carregando o arquivo Json com o mapa do Brasil
+with urlopen('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/brazil-states.geojson') as response:
+    Brasil = json.load(response)
+
+state_id_map = {}
+for feature in Brasil["features"]:
+    feature["id"] = feature["properties"]["sigla"]
+    # definindo a informação do gráfico
+    state_id_map[feature["properties"]["sigla"]] = feature["id"]
 
 # 3. Notas das Perguntas que compõe o Índice de Satisfação Geral e Qualidade
 # 3.1 ISG
@@ -173,6 +190,32 @@ cond.update_traces(line_width=2, textposition='top center')
 cond.update_layout(xaxis=dict(linecolor='rgba(0,0,0,1)', tickmode='array',
                    tickvals=df_hist_condicao['ano'], ticktext=df_hist_condicao['ano']))
 
+# 3 Por estado e regiao
+# Criando o mapa
+choropleth = px.choropleth_mapbox(
+    df_uf,  # database
+    locations='uf',  # define os limites no mapa
+    geojson=Brasil,  # Coordenadas geograficas dos estados
+    color="qtd",  # define a metrica para a cor da escala
+    hover_name='uf',  # informação no box do mapa
+    hover_data=["uf"],
+    # title="Acessos",  # titulo do mapa
+    labels=dict(uf="UF", qtd="Reclamações"),
+    mapbox_style="carto-darkmatter",  # define o style do mapa
+    center={"lat": -14, "lon": -55},  # define os limites para plotar
+    zoom=2.5,  # zoom inicial no mapa
+    color_continuous_scale="YlOrRd",  # cor dos estados
+    # range_color=(0, max(df_UF_flag.Acessos)),  # Intervalo da legenda
+    opacity=0.5  # opacidade da cor do mapa, para aparecer o fundo
+)
+
+choropleth.update_layout(
+
+    plot_bgcolor='rgba(0, 0, 0, 0)',
+    coloraxis_showscale=False,  # Tira a legenda
+    margin=dict(l=0, r=0, t=0, b=0),
+    height=350
+)
 
 #######################
 # Dashboard Main Panel
@@ -187,3 +230,9 @@ with st.expander("Solicitações, 2015-2024", expanded=True):
 
 with st.expander("Condição da reclamação, 2015-2024", expanded=True):
     st.plotly_chart(cond, use_container_width=True)
+
+st.markdown("## Por Estado e Região")
+
+with st.expander("Mapa do Brasil, 2023", expanded=True):
+    # st.markdown("xxx")
+    st.plotly_chart(choropleth, use_container_width=True)
