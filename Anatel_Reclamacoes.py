@@ -79,7 +79,6 @@ section[data-testid="stSidebar"] {
 
 #######################
 # Carregando dataset
-# df_anatel = pd.read_csv('datasets/df_anatel.csv.bz2')
 
 @st.cache_data
 def load_data():
@@ -87,6 +86,9 @@ def load_data():
 
 
 df_anatel = load_data()
+
+df_uf_hist = pd.read_csv(
+    'https://raw.githubusercontent.com/gabrielmprata/Anatel_Reclamacoes/main/datasets/uf_historico.csv', sep=';')
 
 # Construção dos Datasets
 # 1. Histórico indicadores
@@ -137,7 +139,10 @@ df_total_regiao = (df_anatel[["regiao", 'qtd']]
                    ).groupby(["regiao"])['qtd'].sum().reset_index()
 
 
-# 3.2 Perguntas qualidade
+# 3.2 UF historico
+# Criando a coluna histórico
+df_uf_hist["historico"] = "[" + df_uf_hist["2015"].apply(str) + ", " + df_uf_hist["2016"].apply(str) + ", " + df_uf_hist["2017"].apply(str) + ", " + df_uf_hist["2018"].apply(str) + ", " + df_uf_hist["2019"].apply(
+    str) + ", " + df_uf_hist["2020"].apply(str) + ", " + df_uf_hist["2021"].apply(str) + ", " + df_uf_hist["2022"].apply(str) + ", " + df_uf_hist["2023"].apply(str) + ", " + df_uf_hist["2024"].apply(str) + "]"
 
 
 # 4. Perfil Sociodemográfico
@@ -249,3 +254,5 @@ with st.expander("Mapa do Brasil, 2023", expanded=True):
 
     with col[1]:
         st.plotly_chart(reg, use_container_width=True)
+
+df_uf_hist
