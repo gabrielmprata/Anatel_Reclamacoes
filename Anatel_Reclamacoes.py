@@ -291,13 +291,8 @@ with st.expander("Condição da reclamação, 2015-2024", expanded=True):
 st.markdown("## Por Estado e Região")
 
 with st.expander("Mapa do Brasil, 2023", expanded=True):
-    col = st.columns((3.6, 2.3), gap='medium')
-
-    with col[0]:
-        st.plotly_chart(choropleth, use_container_width=True)
-
-    with col[1]:
-        st.plotly_chart(reg, use_container_width=True)
+    st.plotly_chart(choropleth, use_container_width=True)
+    col = st.columns((4.9, 4.1), gap='medium')
 
     with col[0]:
         st.dataframe(
@@ -313,6 +308,10 @@ with st.expander("Mapa do Brasil, 2023", expanded=True):
             },
             hide_index=True,
         )
+
+    with col[1]:
+        st.plotly_chart(reg, use_container_width=True)
+
 st.markdown("## Por Operadora")
 
 with st.expander("Operadoras, 2023", expanded=True):
