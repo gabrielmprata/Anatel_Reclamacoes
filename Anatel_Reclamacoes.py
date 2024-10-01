@@ -168,10 +168,19 @@ oper_historico["historico"] = "[" + oper_historico["2015"].apply(str) + ", " + o
 oper_historico = pd.merge(oper_historico, oper_logo,
                           left_on='Operadora', right_on='Operadora')
 
-# 4.2 Faixa etária
+# 5. Reclamacao por assunto
+df_assunto = (df_anatel[["assunto", 'qtd']]
+              [(df_anatel['ano'] == 2023)]
+              ).groupby(["assunto"])['qtd'].sum().reset_index()
 
+df_assunto.sort_values(by='qtd', ascending=False, inplace=True)
 
-# 4.3 Renda
+# 6. Reclamacao por problema
+df_problema = (df_anatel[["problema", 'qtd']]
+               [(df_anatel['ano'] == 2023)]
+               ).groupby(["problema"])['qtd'].sum().reset_index()
+
+df_problema.sort_values(by='qtd', ascending=False, inplace=True)
 
 
 # 4.4 Escolaridade
@@ -248,6 +257,22 @@ reg = px.pie(df_total_regiao, values='qtd', names='regiao', labels=dict(regiao="
 reg.update_layout(showlegend=False)
 reg.update_traces(textposition='outside', textinfo='percent+label')
 
+# 5. Reclamacao por assunto
+reclama = px.bar(df_assunto, x='qtd', y='assunto', color='assunto', orientation='h',
+                 labels=dict(assunto="Assunto", qtd="Reclamações"),
+                 color_discrete_sequence=["#fff666"],
+                 template="plotly_dark",  text_auto='.3s'
+                 )
+reclama.update_layout(showlegend=False)
+
+# 5. Reclamacao por problema
+prob = px.bar(df_problema.head(10), x='qtd', y='problema', color='problema', orientation='h',
+              labels=dict(problema="Problema", qtd="Reclamações"),
+              color_discrete_sequence=["#fff666"],
+              template="plotly_dark",  text_auto='.3s'
+              )
+prob.update_layout(showlegend=False)
+
 
 #######################
 # Dashboard Main Panel
@@ -304,3 +329,11 @@ with st.expander("Operadoras, 2023", expanded=True):
         },
         hide_index=True,
     )
+
+st.markdown("## Reclamação por Assunto e Problema")
+
+with st.expander("Assunto, 2023", expanded=True):
+    st.plotly_chart(reclama, use_container_width=True)
+
+with st.expander("Top 10 Problemas, 2023", expanded=True):
+    st.plotly_chart(prob, use_container_width=True)
