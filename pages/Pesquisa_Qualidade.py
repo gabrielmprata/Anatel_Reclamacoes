@@ -406,40 +406,41 @@ st.markdown(
 with st.expander("Satisfação Geral", expanded=True):
     st.plotly_chart(isg, use_container_width=True)
 
-with st.expander("Qualidade", expanded=False):
+with st.expander("Qualidade", expanded=True):
 
-    col = st.columns((2.6, 2.9), gap='medium')
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(
+        ["Cobrança", "Informação ao consumidor", "Atendimento digital", "Atendimento telefônico", "Funcionamento"])
 
-    with col[0]:
+    with tab1:
         st.plotly_chart(qual1, use_container_width=True)
 
-    with col[1]:
+    with tab2:
         st.plotly_chart(qual2, use_container_width=True)
 
-    with col[0]:
+    with tab3:
         st.plotly_chart(qual3, use_container_width=True)
 
-    with col[1]:
+    with tab4:
         st.plotly_chart(qual4, use_container_width=True)
 
-    col2 = st.columns((5.6, 0.6), gap='medium')
-    with col2[0]:
+    with tab5:
         st.plotly_chart(qual5, use_container_width=True)
 
 st.markdown("# Perfil Sociodemográfico dos Consumidores, 2023")
 
 with st.expander("Perfil", expanded=True):
 
-    col = st.columns((2.6, 2.9), gap='medium')
+    tab1, tab2, tab3, tab4 = st.tabs(
+        ["Sexo", "Faixa etária", "Renda familiar", "Escolaridade"])
 
-    with col[0]:
+    with tab1:
         st.plotly_chart(sexo, use_container_width=True)
 
-    with col[1]:
+    with tab2:
         st.plotly_chart(idade, use_container_width=True)
 
-    with col[0]:
+    with tab3:
         st.plotly_chart(renda, use_container_width=True)
 
-    with col[1]:
+    with tab4:
         st.plotly_chart(escola, use_container_width=True)
