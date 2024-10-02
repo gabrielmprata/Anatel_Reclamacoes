@@ -6,6 +6,7 @@ import json
 from urllib.request import urlopen
 # import webbrowser
 import pandas as pd
+import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
 # from streamlit.components.v1 import html
@@ -183,7 +184,20 @@ df_problema = (df_anatel[["problema", 'qtd']]
 df_problema.sort_values(by='qtd', ascending=False, inplace=True)
 
 
-# 4.4 Escolaridade
+# 7. Maior problema reclamado
+# Dataframe assunto agrupado por operadora
+df_oper_assunto = (df_anatel[["ano", "marca", 'qtd']]
+                   [(df_anatel['assunto'] == "Cobrança")]
+                   ).groupby(["ano", "marca"])['qtd'].sum().reset_index()
+
+# df_oper_assunto.sort_values(by='qtd', ascending=False, inplace=True)
+
+# Criando pivot table
+pv_oper_assunto = pd.pivot_table(df_oper_assunto, index=[
+                                 'marca'], aggfunc='sum', columns=['ano'], values=['qtd'], fill_value=0)
+
+pv_oper_assunto = pv_oper_assunto.reindex(
+    pv_oper_assunto['qtd'].sort_values(by=2023, ascending=False).index)
 
 
 #######################
@@ -273,6 +287,11 @@ prob = px.bar(df_problema.head(10), x='qtd', y='problema', color='problema', ori
               )
 prob.update_layout(showlegend=False)
 
+# 7. Maior problema reclamado
+cmap = plt.cm.get_cmap('YlOrRd')
+# st.dataframe(pv_oper_assunto.style.background_gradient(
+#   cmap=cmap, vmin=(-0.015), vmax=0.015, axis=None))
+
 
 #######################
 # Dashboard Main Panel
@@ -336,3 +355,11 @@ with st.expander("Assunto, 2023", expanded=True):
 
 with st.expander("Top 10 Problemas, 2023", expanded=True):
     st.plotly_chart(prob, use_container_width=True)
+
+st.markdown("## Maior Problema reclamado por Operadora")
+st.write(pv_oper_assunto.style.background_gradient(cmap=cmap
+                                                   ).to_html(), unsafe_allow_html=True)
+
+
+st.write(pv_oper_assunto.style.background_gradient(
+    cmap='YlOrRd').format("{:,}"))
