@@ -190,14 +190,19 @@ df_oper_assunto = (df_anatel[["ano", "marca", 'qtd']]
                    [(df_anatel['assunto'] == "Cobrança")]
                    ).groupby(["ano", "marca"])['qtd'].sum().reset_index()
 
-# df_oper_assunto.sort_values(by='qtd', ascending=False, inplace=True)
+# renomear colunas
+df_oper_assunto = df_oper_assunto.rename(columns={'ano': 'Ano',
+                                                  'marca': 'Operadora',
+                                                  'qtd': 'Reclamações'
+                                                  })
+
 
 # Criando pivot table
 pv_oper_assunto = pd.pivot_table(df_oper_assunto, index=[
-                                 'marca'], aggfunc='sum', columns=['ano'], values=['qtd'], fill_value=0)
+                                 'Operadora'], aggfunc='sum', columns=['Ano'], values=['Reclamações'], fill_value=0)
 
 pv_oper_assunto = pv_oper_assunto.reindex(
-    pv_oper_assunto['qtd'].sort_values(by=2023, ascending=False).index)
+    pv_oper_assunto['Reclamações'].sort_values(by=2023, ascending=False).index)
 
 
 #######################
@@ -357,9 +362,6 @@ with st.expander("Top 10 Problemas, 2023", expanded=True):
     st.plotly_chart(prob, use_container_width=True)
 
 st.markdown("## Maior Problema reclamado por Operadora")
-st.write(pv_oper_assunto.style.background_gradient(cmap=cmap
-                                                   ).to_html(), unsafe_allow_html=True)
 
-
-st.write(pv_oper_assunto.style.background_gradient(
-    cmap='YlOrRd').format("{:,}"))
+with st.expander("Cobrança", expanded=True):
+    st.write(pv_oper_assunto.style.background_gradient(cmap=cmap))
