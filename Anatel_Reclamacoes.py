@@ -293,10 +293,33 @@ prob = px.bar(df_problema.head(10), x='qtd', y='problema', color='problema', ori
 prob.update_layout(showlegend=False)
 
 # 7. Maior problema reclamado
-cmap = plt.cm.get_cmap('YlOrRd')
-# st.dataframe(pv_oper_assunto.style.background_gradient(
-#   cmap=cmap, vmin=(-0.015), vmax=0.015, axis=None))
 
+oper_assunto = px.imshow(pv_oper_assunto,
+                         labels=dict(x="Ano", y="Operadora",
+                                     color="Reclamações"),
+                         y=['CLARO', 'VIVO', 'OI', 'Outros', 'TIM', 'SKY', "ALGAR", "HUGHES", "Brisanet", "MOB TELECOM", "LIGGA TELECOM",
+                             "SERCOMTEL", "BLINK TELECOM", "CABO TELECOM", "VALENET", "UNIFIQUE", "PROXXIMA", "GB ONLINE", "BR SUPER"],
+                         x=[2015, 2016, 2017, 2018, 2019,
+                             2020, 2021, 2022, 2023, 2024],
+                         # labels=dict(ano="Ano", marca="Operadora", qtd="Reclamações"),
+                         color_continuous_scale="YlOrRd",
+                         text_auto=True,
+                         template="plotly_dark",
+                         height=550,  # altura
+                         width=950,  # largura
+                         )
+
+oper_assunto.update_layout(
+
+    xaxis=dict(
+        tickvals=['2015', '2016', '2017', '2018', '2019',
+                  '2020', '2021', '2022', '2023', '2024'],
+        ticktext=['2015', '2016', '2017', '2018', '2019',
+                  '2020', '2021', '2022', '2023', '2024']
+    )
+)
+
+oper_assunto.update_xaxes(side="top")
 
 #######################
 # Dashboard Main Panel
@@ -364,4 +387,4 @@ with st.expander("Top 10 Problemas, 2023", expanded=True):
 st.markdown("## Maior Problema reclamado por Operadora")
 
 with st.expander("Cobrança", expanded=True):
-    st.write(pv_oper_assunto.style.background_gradient(cmap=cmap))
+    st.plotly_chart(oper_assunto, use_container_width=True)
