@@ -4,12 +4,10 @@ import streamlit as st
 import altair as alt
 import json
 from urllib.request import urlopen
-# import webbrowser
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import plotly.express as px
-# from streamlit.components.v1 import html
 
 
 #######################
@@ -20,7 +18,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
-
 
 alt.themes.enable("dark")
 
