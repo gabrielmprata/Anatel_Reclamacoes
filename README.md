@@ -11,7 +11,8 @@
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dash-anatel-reclamacoes-qualidade.streamlit.app/)
 
-<img src="https://github.com/user-attachments/assets/d1e085ba-f7e9-4ac1-900d-9922c2baf3bc" alt="Dashboard"  height="350">
+<img src="https://github.com/user-attachments/assets/9a79bb15-556e-4942-a2cf-fc1aa3f9cc47" alt="Dashboard"  height="350">
+
 
 <br>
 
