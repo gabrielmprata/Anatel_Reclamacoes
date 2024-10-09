@@ -9,10 +9,9 @@
 
 ## 🖥️ Demo App
 
-[![Streamlit App](https://dash-anatel-reclamacoes-qualidade.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dash-anatel-reclamacoes-qualidade.streamlit.app/)
 
-<img src="https://github.com/user-attachments/assets/09fbc3f4-0a94-4618-8266-b164c6b2362d" alt="Dashboard"  height="350">
-
+<img src="https://github.com/user-attachments/assets/d1e085ba-f7e9-4ac1-900d-9922c2baf3bc" alt="Dashboard"  height="350">
 
 <br>
 
