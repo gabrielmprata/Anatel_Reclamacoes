@@ -71,4 +71,4 @@ Ao descompactar, usamos nesse projeto o arquivo, *reclamacoes_contexto.csv*, com
 >
 Link para o arquivo .py
 >
-[<img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg" width="40" height="40"/>](https://github.com/gabrielmprata/Anatel_Reclamacoes/blob/main/Pre_etl.py)
+[<img loading="lazy" src="https://github.com/gabrielmprata/Anatel_Reclamacoes/blob/6c5b82301d75a3a8b5026bf703a41cb7c5080140/images/githubcodespaces-original.svg" width="40" height="40"/>](https://github.com/gabrielmprata/Anatel_Reclamacoes/blob/main/Pre_etl.py)
