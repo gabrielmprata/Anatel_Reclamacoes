@@ -75,7 +75,7 @@ Link para o arquivo .py
 
 [![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HcN6QvrPrgMSWPA8P6NH2x6r4OqUEvev#)
 >
-### 3.1 Dataset Pesquisa de satisfação e qualidade
+### 3.2 Dataset Pesquisa de satisfação e qualidade
 >
 [![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1XcwVd8iIzISfIDcQupraeRMJ3vjZaIO5)
 >
