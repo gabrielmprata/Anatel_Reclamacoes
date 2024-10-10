@@ -74,3 +74,8 @@ Link para o arquivo .py
 [<img loading="lazy" src="https://github.com/gabrielmprata/Anatel_Reclamacoes/blob/6c5b82301d75a3a8b5026bf703a41cb7c5080140/images/githubcodespaces-original.svg" width="40" height="40"/>](https://github.com/gabrielmprata/Anatel_Reclamacoes/blob/main/Pre_etl.py)
 
 [![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HcN6QvrPrgMSWPA8P6NH2x6r4OqUEvev#)
+>
+### 3.1 Dataset Pesquisa de satisfação e qualidade
+>
+[![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1XcwVd8iIzISfIDcQupraeRMJ3vjZaIO5)
+>
