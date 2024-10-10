@@ -61,3 +61,14 @@ Principais técnicas utilizadas:
 >
 **Agregação:** Também pode ser considerada uma técnica de redução de dimensionalidade, pois reduz o número de linhas e colunas de um dataset.
 >
+### 3.1 Dataset Reclamações
+>
+No link da etapa anterior, é disponibilizado um arquivo compactado *consumidor_reclamacoes.zip*, com ceraga de 520 mega bytes.
+>
+Ao descompactar, usamos nesse projeto o arquivo, *reclamacoes_contexto.csv*, com cerca de 3,8 Gigabytes.
+>
+É um arquivo muito grande para manipular no Colab, sendo assim desenvolvi um código Python no VsCode, usando os recursos da minha máquina, para importar o arquivo, e gerar um arquivo compactado para poder utilizar com mais facilidade e agilidade no Google Colab.
+>
+Link para o arquivo .py
+>
+[<img loading="lazy" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg" width="40" height="40"/>](https://github.com/gabrielmprata/Anatel_Reclamacoes/blob/main/Pre_etl.py)
