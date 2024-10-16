@@ -1,5 +1,5 @@
 # :bar_chart: Anatel - Reclamações 😡 :chart_with_upwards_trend:
-# :bar_chart: Pesquisa de satisfação e qualidade 🙂☹️😡 :chart_with_upwards_trend:
+# :bar_chart: Pesquisa de Satisfação e Qualidade 🙂☹️😡 :chart_with_upwards_trend:
 
 <p align="left">
 <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=RED&style=for-the-badge" #vitrinedev/>  
