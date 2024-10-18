@@ -43,11 +43,11 @@ O mercado de banda larga fixa vem crescendo cada vez mais no Brasil, gerando uma
 >
 Os dados das **Reclamações**, foram coletados do sítio da Agência Nacional de Telecomunicações.<img align="left" width="45" height="45" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Anatel_Logo.svg/180px-Anatel_Logo.svg.png">
 >
-https://dados.gov.br/dados/conjuntos-dados/solicitacoesregistradasnaanatel
+Link: https://dados.gov.br/dados/conjuntos-dados/solicitacoesregistradasnaanatel
 >
 As informações da **Pesquisa de satisfção e qualidade**, estão no sítio de dados abertos da Anatel, no link abaixo:
 >
-https://dados.gov.br/dados/conjuntos-dados/pesquisas-de-satisfacao-e-qualidade-percebida
+Link: https://dados.gov.br/dados/conjuntos-dados/pesquisas-de-satisfacao-e-qualidade-percebida
 <br><br>
 
 # **<font color=#85d338> 3. Pré-porcessamento**
