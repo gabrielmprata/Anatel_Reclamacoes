@@ -50,7 +50,7 @@ As informações da **Pesquisa de satisfção e qualidade**, estão no sítio de
 Link: https://dados.gov.br/dados/conjuntos-dados/pesquisas-de-satisfacao-e-qualidade-percebida
 <br><br>
 
-# **<font color=#85d338> 3. Pré-porcessamento**
+# **<font color=#85d338> 3. Pré-processamento**
 >
 Esta é a etapa mais demorada e trabalhosa do projeto de ciência de dados, e estima-se que consuma pelo menos 70% do tempo total do projeto.
 >
