@@ -85,3 +85,4 @@ Link para o arquivo .py
 >
 # **<font color=#85d338> 4. Apresentação dos resultados**
 >
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dash-anatel-reclamacoes-qualidade.streamlit.app/)
