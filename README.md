@@ -86,3 +86,6 @@ Link para o arquivo .py
 # **<font color=#85d338> 4. Apresentação dos resultados**
 >
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dash-anatel-reclamacoes-qualidade.streamlit.app/)
+>
+[![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/128j6Ml8eXVczdygaDij1uqz9YnoZy-K9)
+>
