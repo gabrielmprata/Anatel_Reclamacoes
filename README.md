@@ -41,7 +41,7 @@ O mercado de banda larga fixa vem crescendo cada vez mais no Brasil, gerando uma
 
 # **<font color=#85d338> 2. Coleta de Dados**
 >
-Os dados das **Reclamações**, foram coletados do sítio da Agência Nacional de Telecomunicações.<img align="left" width="45" height="45" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Anatel_Logo.svg/180px-Anatel_Logo.svg.png">
+Os dados das **Reclamações**, foram coletados do sítio da Agência Nacional de Telecomunicações.<img align="left" width="45" height="45" 
 >
 Link: https://dados.gov.br/dados/conjuntos-dados/solicitacoesregistradasnaanatel
 >
