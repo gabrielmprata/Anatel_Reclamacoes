@@ -13,7 +13,6 @@
 
 <img src="https://github.com/user-attachments/assets/9a79bb15-556e-4942-a2cf-fc1aa3f9cc47" alt="Dashboard"  height="350">
 
-
 <br>
 
 # :radio_button: Objetivo 
